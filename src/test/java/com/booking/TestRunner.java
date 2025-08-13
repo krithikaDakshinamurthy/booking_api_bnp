@@ -16,9 +16,9 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 				"json:target/cucumber/cucumber.json",
 				"com.api.utils.MyTestListener"
 		}
-		,features= {"src/test/resources/features/"}
+		,features= {"src/test/resources/features"}
 		,glue = {"com.booking.stepdefinitions"}
-		,dryRun = false
+//		,dryRun = false
 		,monochrome = true
 //		,snippets = SnippetType.CAMELCASE
 		//,tags = "@deleteBookingIDs"
