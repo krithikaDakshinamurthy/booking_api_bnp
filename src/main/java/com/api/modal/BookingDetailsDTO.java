@@ -47,7 +47,7 @@ public class BookingDetailsDTO
         return phone;
     }
 
-    public void setPhone(String email)
+    public void setPhone(String phone)
     {
         this.phone = phone;
     }

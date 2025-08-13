@@ -16,12 +16,12 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 				"json:target/cucumber/cucumber.json",
 				"com.api.utils.MyTestListener"
 		}
-		,features= {"src/test/resources/features/DeleteBooking.feature"}
-		,glue = {"com.booking.stepdefinition"}
-		//,dryRun = true
+		,features= {"src/test/resources/features/"}
+		,glue = {"com.booking.stepdefinitions"}
+		,dryRun = false
 		,monochrome = true
-		,snippets = SnippetType.CAMELCASE
-		,tags = "@deleteBookingIDs"
+//		,snippets = SnippetType.CAMELCASE
+		//,tags = "@deleteBookingIDs"
 		//,publish = true
 		)
 
