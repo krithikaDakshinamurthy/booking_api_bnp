@@ -36,6 +36,7 @@ public class CreateBookingStepdefinition {
 			bookingBody.put("lastname", bookingData.get("lastname"));
 			bookingBody.put("email", bookingData.get("email"));
 			bookingBody.put("phone", bookingData.get("phone"));
+			bookingBody.put("depositpaid", Boolean.valueOf(bookingData.get("depositpaid")));
 			JSONObject bookingDates = new JSONObject();
 			bookingDates.put("checkin", (bookingData.get("checkin")));
 			bookingDates.put("checkout", (bookingData.get("checkout")));
@@ -75,6 +76,15 @@ public class CreateBookingStepdefinition {
 			context.session.put("excelDataMap", excelDataMap);
 		}
 	
-	
+		@When("user creates a booking using data {string} from JSON file {string}")
+		public void userCreatesABookingUsingDataFromJSONFile(String dataKey, String JSONFile) {
+			context.response = context.requestSetup().body(JsonReader.getRequestBody(JSONFile,dataKey))
+					.when().post(context.session.get("endpoint").toString());
+
+			BookingDTO bookingDTO = ResponseHandler.deserializedResponse(context.response, BookingDTO.class);
+			assertNotNull("Booking not created", bookingDTO);
+			LOG.info("Newly created booking ID: "+bookingDTO.getBookingid());	
+			context.session.put("bookingID", bookingDTO.getBookingid());
+		}
 	}
 	

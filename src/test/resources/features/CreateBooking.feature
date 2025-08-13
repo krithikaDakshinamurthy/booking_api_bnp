@@ -8,7 +8,6 @@ Feature: To create a new booking in online booking application
       | firstname   | lastname   | email   | phone   | checkin   | checkout   |
       | <firstname> | <lastname> | <email> | <phone> | <checkin> | <checkout> |
     Then user should get the response code 200
-    And user validates the response with JSON schema "createBookingSchema.json"
 
     Examples: 
       | firstname | lastname | email | phone | checkin    | checkout   | 

@@ -44,7 +44,7 @@ public class ViewBookingDetailsStepdefinition {
 	}
 
 	@Then("user should get the response code {int}")
-	public void userShpuldGetTheResponseCode(Integer statusCode) {
+	public void userShouldGetTheResponseCode(Integer statusCode) {
 		assertEquals(Long.valueOf(statusCode), Long.valueOf(context.response.getStatusCode()));
 	}
 
@@ -83,8 +83,4 @@ public class ViewBookingDetailsStepdefinition {
 		assertNotNull("Booking ID not found!!", bookingIDs);
 	}
 	
-	@When("user makes a request to check the health of booking service")
-	public void userMakesARequestToCheckTheHealthOfBookingService() {
-		context.response = context.requestSetup().get(context.session.get("endpoint").toString());
-	}
 }
