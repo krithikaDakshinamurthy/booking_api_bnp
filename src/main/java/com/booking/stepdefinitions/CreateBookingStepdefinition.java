@@ -3,6 +3,7 @@ package com.booking.stepdefinitions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.response.Response;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -37,7 +38,7 @@ public class CreateBookingStepdefinition {
 			bookingDates.put("checkin", (bookingData.get("checkin")));
 			bookingDates.put("checkout", (bookingData.get("checkout")));
 
-			context.response = context.requestSetup().body(bookingBody.toString())
+			Response response = context.requestSetup().body(bookingBody.toString())
 					.when().post(context.session.get("endpoint").toString());
 
 			BookingDTO bookingDTO = ResponseHandler.deserializedResponse(context.response, BookingDTO.class);
