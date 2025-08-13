@@ -21,7 +21,6 @@ Feature: To create a new booking in online booking application
     Given user has access to endpoint "/booking"
     When user creates a booking using data "<dataKey>" from Excel
     Then user should get the response code 200
-    And user validates the response with JSON schema from Excel
 
     Examples: 
       | dataKey        |

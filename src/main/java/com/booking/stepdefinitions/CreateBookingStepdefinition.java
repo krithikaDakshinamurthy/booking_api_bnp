@@ -15,6 +15,8 @@ import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
 import com.api.modal.BookingDTO;
+import com.api.utils.ExcelUtils;
+import com.api.utils.JsonReader;
 import com.api.utils.ResponseHandler;
 import com.api.utils.TestContext;
 
@@ -38,7 +40,7 @@ public class CreateBookingStepdefinition {
 			bookingDates.put("checkin", (bookingData.get("checkin")));
 			bookingDates.put("checkout", (bookingData.get("checkout")));
 
-			Response response = context.requestSetup().body(bookingBody.toString())
+			context.response = context.requestSetup().body(bookingBody.toString())
 					.when().post(context.session.get("endpoint").toString());
 
 			BookingDTO bookingDTO = ResponseHandler.deserializedResponse(context.response, BookingDTO.class);
@@ -59,7 +61,19 @@ public class CreateBookingStepdefinition {
 			assertEquals("Check out Date did not match", bookingData.get("checkout"), bookingDTO.getBooking().getBookingdates().getCheckout());
 		}
 	
-	
+		@When("user creates a booking using data {string} from Excel")
+		public void userCreatesABookingUsingDataFromExcel(String dataKey) throws Exception {
+			Map<String,String> excelDataMap = ExcelUtils.getData(dataKey);
+			context.response = context.requestSetup().body(excelDataMap.get("requestBody"))
+					.when().post(context.session.get("endpoint").toString());
+
+			BookingDTO bookingDTO = ResponseHandler.deserializedResponse(context.response, BookingDTO.class);
+			assertNotNull("Booking not created", bookingDTO);
+			LOG.info("Newly created booking ID: "+bookingDTO.getBookingid());
+			context.session.put("bookingID", bookingDTO.getBookingid());
+			validateBookingData(new JSONObject(excelDataMap.get("responseBody")), bookingDTO);
+			context.session.put("excelDataMap", excelDataMap);
+		}
 	
 	
 	}

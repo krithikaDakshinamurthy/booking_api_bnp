@@ -1,15 +1,15 @@
 package com.api.utils;
 
+
 import java.util.HashMap;
 import java.util.Map;
-
-import org.jsoup.helper.HttpConnection.Response;
 
 import com.github.dzieciou.testing.curl.CurlRestAssuredConfigFactory;
 import com.github.dzieciou.testing.curl.Options;
 
 import io.restassured.RestAssured;
 import io.restassured.config.RestAssuredConfig;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 public class TestContext {
