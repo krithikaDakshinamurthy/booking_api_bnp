@@ -3,10 +3,7 @@ package com.booking.stepdefinitions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.response.Response;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -16,7 +13,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
-import com.api.model.BookingDTO;
+import com.api.modal.BookingDTO;
 import com.api.utils.ResponseHandler;
 import com.api.utils.TestContext;
 

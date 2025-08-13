@@ -1,0 +1,26 @@
+{
+	"createBooking1": {
+		 "roomid": 1,
+  "firstname": "test",
+  "lastname": "jo",
+  "depositpaid": false,
+  "bookingdates": {
+    "checkin": "2025-08-13",
+    "checkout": "2025-08-14"
+  },
+  "email": "test@test.com",
+  "phone": "314823489234"
+	},
+	"createBooking2": {
+		 "roomid": 2,
+  "firstname": "test",
+  "lastname": "jonah",
+  "depositpaid": false,
+  "bookingdates": {
+    "checkin": "2025-08-23",
+    "checkout": "2025-08-24"
+  },
+  "email": "testjohan@test.com",
+  "phone": "314823489234"
+	}
+}
